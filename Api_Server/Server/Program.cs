@@ -2,17 +2,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Server.Data;
 using Server.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<shopIdentityContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("shopIdentityContext") ?? throw new InvalidOperationException("Connection string 'shopIdentityContext' not found.")));
+builder.Services.AddDbContext<PhoneshopIdentityContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PhoneshopIdentityContext") ?? throw new InvalidOperationException("Connection string 'PhoneshopIdentityContext' not found.")));
 // Config for Identity
 builder.Services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<shopIdentityContext>()
+                .AddEntityFrameworkStores<PhoneshopIdentityContext>()
                 .AddDefaultTokenProviders();
 
 //Config for Authentication
@@ -23,7 +24,8 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
 //Config for JWT
-.AddJwtBearer(options => {
+.AddJwtBearer(options =>
+{
     options.SaveToken = true;
     options.RequireHttpsMetadata = false;
     options.TokenValidationParameters = new TokenValidationParameters()
