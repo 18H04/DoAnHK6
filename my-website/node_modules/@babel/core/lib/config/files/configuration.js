@@ -44,18 +44,20 @@ function _gensync() {
   };
   return data;
 }
-var _caching = require("../caching.js");
-var _configApi = require("../helpers/config-api.js");
-var _utils = require("./utils.js");
-var _moduleTypes = require("./module-types.js");
-var _patternToRegex = require("../pattern-to-regex.js");
-var _configError = require("../../errors/config-error.js");
-var fs = require("../../gensync-utils/fs.js");
-var _rewriteStackTrace = require("../../errors/rewrite-stack-trace.js");
+var _caching = require("../caching");
+var _configApi = require("../helpers/config-api");
+var _utils = require("./utils");
+var _moduleTypes = require("./module-types");
+var _patternToRegex = require("../pattern-to-regex");
+var _configError = require("../../errors/config-error");
+var fs = require("../../gensync-utils/fs");
+var _rewriteStackTrace = require("../../errors/rewrite-stack-trace");
 const debug = _debug()("babel:config:loading:files:configuration");
-const ROOT_CONFIG_FILENAMES = exports.ROOT_CONFIG_FILENAMES = ["babel.config.js", "babel.config.cjs", "babel.config.mjs", "babel.config.json", "babel.config.cts"];
+const ROOT_CONFIG_FILENAMES = ["babel.config.js", "babel.config.cjs", "babel.config.mjs", "babel.config.json", "babel.config.cts"];
+exports.ROOT_CONFIG_FILENAMES = ROOT_CONFIG_FILENAMES;
 const RELATIVE_CONFIG_FILENAMES = [".babelrc", ".babelrc.js", ".babelrc.cjs", ".babelrc.mjs", ".babelrc.json", ".babelrc.cts"];
 const BABELIGNORE_FILENAME = ".babelignore";
+const LOADING_CONFIGS = new Set();
 const runConfig = (0, _caching.makeWeakCache)(function* runConfig(options, cache) {
   yield* [];
   return {
@@ -65,7 +67,17 @@ const runConfig = (0, _caching.makeWeakCache)(function* runConfig(options, cache
 });
 function* readConfigCode(filepath, data) {
   if (!_fs().existsSync(filepath)) return null;
-  let options = yield* (0, _moduleTypes.default)(filepath, "You appear to be using a native ECMAScript module configuration " + "file, which is only supported when running Babel asynchronously.");
+  if (LOADING_CONFIGS.has(filepath)) {
+    debug("Auto-ignoring usage of config %o.", filepath);
+    return buildConfigFileObject({}, filepath);
+  }
+  let options;
+  try {
+    LOADING_CONFIGS.add(filepath);
+    options = yield* (0, _moduleTypes.default)(filepath, "You appear to be using a native ECMAScript module configuration " + "file, which is only supported when running Babel asynchronously.");
+  } finally {
+    LOADING_CONFIGS.delete(filepath);
+  }
   let cacheNeedsConfiguration = false;
   if (typeof options === "function") {
     ({
@@ -77,7 +89,7 @@ function* readConfigCode(filepath, data) {
     throw new _configError.default(`Configuration should be an exported JavaScript object.`, filepath);
   }
   if (typeof options.then === "function") {
-    options.catch == null || options.catch(() => {});
+    options.catch == null ? void 0 : options.catch(() => {});
     throw new _configError.default(`You appear to be using an async configuration, ` + `which your current version of Babel does not support. ` + `We may add support for this in the future, ` + `but if you're on the most recent version of @babel/core and still ` + `seeing this error, then you'll need to synchronously return your config.`, filepath);
   }
   if (cacheNeedsConfiguration) throwConfigError(filepath);
