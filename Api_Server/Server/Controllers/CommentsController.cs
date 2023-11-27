@@ -24,7 +24,7 @@ namespace Server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Comment>> GetComment(int id)
         {
-            var comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments.FindAsync(id);
             if (comment == null) { return NotFound(); }
 
             return comment;

@@ -12,8 +12,8 @@ using Server.Data;
 namespace Server.Migrations
 {
     [DbContext(typeof(PhoneshopIdentityContext))]
-    [Migration("20231125191114_init_02")]
-    partial class init_02
+    [Migration("20231127005510_Full_DB")]
+    partial class Full_DB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

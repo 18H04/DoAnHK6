@@ -19,15 +19,13 @@ namespace Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Image>>> GetImage()
         {
-            return await _context.Images.Include(i => i.PhoneModel)
-                                        .ToListAsync();
+            return await _context.Images.ToListAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Image>> GetImage(int id)
         {
-            var image = await _context.Images.Include(i => i.PhoneModel)
-                                             .FirstOrDefaultAsync(i => i.Id == id);
+            var image = await _context.Images.FindAsync(id);
             if (image == null)
             {
                 return NotFound();

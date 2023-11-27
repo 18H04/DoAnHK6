@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Server.Migrations
 {
-    public partial class init_01 : Migration
+    public partial class Full_DB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -114,8 +114,11 @@ namespace Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<int>(type: "int", nullable: false),
+                    DiscountAmount = table.Column<int>(type: "int", nullable: false),
+                    DiscountPercentage = table.Column<double>(type: "float", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -389,34 +392,6 @@ namespace Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PromotionDetail",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PhoneId = table.Column<int>(type: "int", nullable: false),
-                    PromotionId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    UnitPrice = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PromotionDetail", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PromotionDetail_Phones_PhoneId",
-                        column: x => x.PhoneId,
-                        principalTable: "Phones",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PromotionDetail_Promotion_PromotionId",
-                        column: x => x.PromotionId,
-                        principalTable: "Promotion",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Wishlist",
                 columns: table => new
                 {
@@ -547,6 +522,34 @@ namespace Server.Migrations
                         name: "FK_InvoicesDetail_PhoneModels_PhoneModelId",
                         column: x => x.PhoneModelId,
                         principalTable: "PhoneModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PromotionDetail",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PhoneModelId = table.Column<int>(type: "int", nullable: false),
+                    PromotionId = table.Column<int>(type: "int", nullable: false),
+                    DiscountAmount = table.Column<int>(type: "int", nullable: false),
+                    DiscountPercentage = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PromotionDetail", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PromotionDetail_PhoneModels_PhoneModelId",
+                        column: x => x.PhoneModelId,
+                        principalTable: "PhoneModels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PromotionDetail_Promotion_PromotionId",
+                        column: x => x.PromotionId,
+                        principalTable: "Promotion",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -704,9 +707,9 @@ namespace Server.Migrations
                 column: "ProductTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PromotionDetail_PhoneId",
+                name: "IX_PromotionDetail_PhoneModelId",
                 table: "PromotionDetail",
-                column: "PhoneId");
+                column: "PhoneModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PromotionDetail_PromotionId",

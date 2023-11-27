@@ -25,7 +25,7 @@ namespace Server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Review>> GetReview(int id)
         {
-            var review = await _context.Reviews.FirstOrDefaultAsync(r => r.Id == id);
+            var review = await _context.Reviews.FindAsync(id);
 
             if (review == null) { return  NotFound(); };
 

@@ -11,13 +11,14 @@ namespace Server.Controllers
     public class RamsController : ControllerBase
     {
         private readonly PhoneshopIdentityContext _context;
+
         public RamsController(PhoneshopIdentityContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ram>>> GetRam()
+        public async Task<ActionResult<IEnumerable<Ram>>> GetRams()
         {
             return await _context.Ram.ToListAsync();
         }
@@ -25,7 +26,7 @@ namespace Server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Ram>> GetRam(int id)
         {
-            var ram = await _context.Ram.FirstOrDefaultAsync(r => r.Id == id);
+            var ram = await _context.Ram.FindAsync(id);
 
             if (ram == null)
             {
@@ -38,7 +39,7 @@ namespace Server.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRam(int id, Ram ram)
         {
-            if(id != ram.Id)
+            if (id != ram.Id)
             {
                 return BadRequest();
             }
@@ -60,6 +61,7 @@ namespace Server.Controllers
                     throw;
                 }
             }
+
             return NoContent();
         }
 
@@ -69,14 +71,17 @@ namespace Server.Controllers
             _context.Ram.Add(ram);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRam", new {id = ram.Id}, ram);
+            return CreatedAtAction("GetRam", new { id = ram.Id }, ram);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRam(int id)
         {
             var ram = await _context.Ram.FindAsync(id);
-            if (ram == null) { return NotFound(); }
+            if (ram == null)
+            {
+                return NotFound();
+            }
 
             _context.Ram.Remove(ram);
             await _context.SaveChangesAsync();
@@ -84,9 +89,9 @@ namespace Server.Controllers
             return NoContent();
         }
 
-        public bool RamExists(int id)
+        private bool RamExists(int id)
         {
-            return _context.Ram.Any(a => a.Id == id);
+            return _context.Ram.Any(e => e.Id == id);
         }
     }
 }

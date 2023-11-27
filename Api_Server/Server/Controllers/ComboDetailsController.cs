@@ -25,7 +25,7 @@ namespace Server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ComboDetail>> GetComboDetail(int id)
         {
-            var comboDetail = await _context.ComboDetails.FirstOrDefaultAsync(c => c.Id == id);
+            var comboDetail = await _context.ComboDetails.FindAsync(id);
             if(comboDetail == null) { return NotFound(); }
 
             return comboDetail;
