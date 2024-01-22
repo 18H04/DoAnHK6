@@ -21,6 +21,8 @@ namespace Server.Models
 
         public string ShippingPhone { get; set; }
 
+        public string StatusInvoice { get; set; }
+
         [DefaultValue(0)]
         public int Total { get; set; }
 

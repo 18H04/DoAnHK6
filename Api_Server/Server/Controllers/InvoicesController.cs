@@ -80,10 +80,40 @@ namespace Server.Controllers
             var invoice = await _context.Invoices.FindAsync(id);
             if(invoice == null) { return NotFound(); }
 
-            _context.Invoices.Remove(invoice);
+            invoice.Status = false;
             await _context.SaveChangesAsync();
-
             return NoContent();
+        }
+
+        [HttpPatch("StatusInvoice/{id}")]
+        public async Task<IActionResult> PatchStatusInvoice(int id, [FromBody] Invoice updatedInvoice)
+        {
+            var invoice = await _context.Invoices.FindAsync(id);
+
+            if (invoice == null)
+            {
+                return NotFound();
+            }
+
+            // Cập nhật trạng thái ở phía server
+            invoice.StatusInvoice = updatedInvoice.StatusInvoice;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!InvoiceExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
 
         private bool InvoiceExists(int id)

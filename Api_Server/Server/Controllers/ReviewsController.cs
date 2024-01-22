@@ -75,7 +75,7 @@ namespace Server.Controllers
             var review = await _context.Reviews.FindAsync(id);
             if (review == null) { return NotFound();}
 
-            _context.Reviews.Remove(review);
+            review.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

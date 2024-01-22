@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
+using PagedList;
 using Server.Data;
 using Server.Models;
 
@@ -36,6 +37,7 @@ namespace Server.Controllers
 
             return phone;
         }
+
 
         [HttpPut("{id}")]
         public async Task <IActionResult> PutPhone(int id, Phone phone)
@@ -81,7 +83,7 @@ namespace Server.Controllers
             var phone = await _context.Phones.FindAsync(id);
             if (phone == null) { return NotFound();}
 
-            _context.Phones.Remove(phone);
+            phone.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

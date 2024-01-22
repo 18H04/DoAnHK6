@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualBasic;
+using Server.Data;
 using Server.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -16,12 +19,51 @@ namespace Server.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly PhoneshopIdentityContext _context;
 
-        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, PhoneshopIdentityContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            var users = await _context.Users.ToListAsync();
+
+            var usersWithRoles = new List<object>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                usersWithRoles.Add(new
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    FullName = user.FullName,
+                    Roles = roles,
+                    IsDelete = user.IsDeleted
+                });
+            }
+
+            return Ok(usersWithRoles);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if(user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
         }
 
         [HttpPost]
@@ -65,7 +107,7 @@ namespace Server.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register(string Username, string Password, string Email)
+        public async Task<IActionResult> Register(string Username, string Password, string Email, string FullName)
         {
             var userExists = await _userManager.FindByNameAsync(Username);
             if (userExists != null)
@@ -75,18 +117,21 @@ namespace Server.Controllers
             {
                 Email = Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = Username
+                UserName = Username,
+                FullName = FullName
             };
             var result = await _userManager.CreateAsync(user, Password);
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError);
+
+            await _userManager.AddToRoleAsync(user, "User");
 
             return Ok();
         }
 
         [HttpPost]
         [Route("register-admin")]
-        public async Task<IActionResult> RegisterAdmin(string Username, string Password, string Email)
+        public async Task<IActionResult> RegisterAdmin(string Username, string Password, string Email, string FullName)
         {
             var userExists = await _userManager.FindByNameAsync(Username);
             if (userExists != null)
@@ -96,7 +141,8 @@ namespace Server.Controllers
             {
                 Email = Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = Username
+                UserName = Username,
+                FullName = FullName
             };
             var result = await _userManager.CreateAsync(user, Password);
             if (!result.Succeeded)
@@ -113,6 +159,29 @@ namespace Server.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpDelete("{username}")]
+        public async Task<IActionResult> DeleteAdmin(string Username)
+        {
+            var user = await _userManager.FindByNameAsync(Username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.IsDeleted = true;
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

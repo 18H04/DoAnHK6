@@ -83,7 +83,7 @@ namespace Server.Controllers
                 return NotFound();
             }
 
-            _context.Promotion.Remove(promotion);
+            promotion.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

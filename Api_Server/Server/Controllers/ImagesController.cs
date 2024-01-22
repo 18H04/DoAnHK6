@@ -76,7 +76,7 @@ namespace Server.Controllers
             var image = await _context.Images.FindAsync(id);
             if (image == null) { return NotFound();}
 
-            _context.Images.Remove(image);
+            image.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

@@ -78,7 +78,7 @@ namespace Server.Controllers
             var wishlist = await _context.Wishlist.FindAsync(id);
             if(wishlist == null) {  return NotFound(); }
 
-            _context.Wishlist.Remove(wishlist);
+            wishlist.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent(); 

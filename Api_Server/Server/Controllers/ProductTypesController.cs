@@ -83,7 +83,7 @@ namespace Server.Controllers
                 return NotFound();
             }
 
-            _context.ProductTypes.Remove(productType);
+            productType.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

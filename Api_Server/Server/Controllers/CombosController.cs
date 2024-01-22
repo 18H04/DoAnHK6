@@ -83,7 +83,7 @@ namespace Server.Controllers
                 return NotFound();
             }
 
-            _context.Combos.Remove(combo);
+            combo.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

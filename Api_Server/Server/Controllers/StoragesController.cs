@@ -83,7 +83,7 @@ namespace Server.Controllers
                 return NotFound();
             }
 
-            _context.Storage.Remove(storage);
+            storage.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

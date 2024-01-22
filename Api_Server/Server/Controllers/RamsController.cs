@@ -83,7 +83,7 @@ namespace Server.Controllers
                 return NotFound();
             }
 
-            _context.Ram.Remove(ram);
+            ram.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

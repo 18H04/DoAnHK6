@@ -88,7 +88,7 @@ namespace Server.Controllers
             var phoneModel = await _context.PhoneModels.FindAsync(id);
             if (phoneModel == null) { return NotFound(); }
 
-            _context.PhoneModels.Remove(phoneModel);
+            phoneModel.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

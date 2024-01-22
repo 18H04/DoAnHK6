@@ -10,7 +10,7 @@ namespace Server.Models
 
         public Phone Phone { get; set; }
 
-        public double SreenSize {  get; set; }
+        public double ScreenSize {  get; set; }
 
         public int BatteryCapacity { get; set; }
 
@@ -23,6 +23,8 @@ namespace Server.Models
         public string ChargingPort { get; set; }
 
         public string OS { get; set; }
+
+        public string CPU { get; set; }
 
         public int BrandId { get; set; }
 
@@ -37,7 +39,7 @@ namespace Server.Models
 
         public ICollection<Image> Image { get; set; }
 
-        public int colorId {  get; set; }
+        public int ColorId {  get; set; }
 
         public Color Color { get; set; }
 

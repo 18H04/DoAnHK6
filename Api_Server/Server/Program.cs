@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<PhoneshopIdentityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("PhoneshopIdentityContext") ?? throw new InvalidOperationException("Connection string 'PhoneshopIdentityContext' not found.")));
+
 // Config for Identity
 builder.Services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PhoneshopIdentityContext>()

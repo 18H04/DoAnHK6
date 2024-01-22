@@ -83,7 +83,7 @@ namespace Server.Controllers
                 return NotFound();
             }
 
-            _context.Brands.Remove(brand);
+            brand.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();

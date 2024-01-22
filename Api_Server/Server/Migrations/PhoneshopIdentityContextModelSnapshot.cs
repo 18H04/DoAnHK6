@@ -354,6 +354,9 @@ namespace Server.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<string>("StatusInvoice")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Total")
                         .HasColumnType("int");
 
@@ -446,11 +449,17 @@ namespace Server.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CPU")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CameraResolution")
                         .HasColumnType("int");
 
                     b.Property<string>("ChargingPort")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("OS")
                         .HasColumnType("nvarchar(max)");
@@ -464,7 +473,7 @@ namespace Server.Migrations
                     b.Property<int>("RamId")
                         .HasColumnType("int");
 
-                    b.Property<double>("SreenSize")
+                    b.Property<double>("ScreenSize")
                         .HasColumnType("float");
 
                     b.Property<bool>("Status")
@@ -473,20 +482,17 @@ namespace Server.Migrations
                     b.Property<int>("StorageId")
                         .HasColumnType("int");
 
-                    b.Property<int>("colorId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
 
                     b.HasIndex("PhoneId");
 
                     b.HasIndex("RamId");
 
                     b.HasIndex("StorageId");
-
-                    b.HasIndex("colorId");
 
                     b.ToTable("PhoneModels");
                 });
@@ -670,6 +676,9 @@ namespace Server.Migrations
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -911,6 +920,12 @@ namespace Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Server.Models.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Server.Models.Phone", "Phone")
                         .WithMany()
                         .HasForeignKey("PhoneId")
@@ -926,12 +941,6 @@ namespace Server.Migrations
                     b.HasOne("Server.Models.Storage", "Storage")
                         .WithMany()
                         .HasForeignKey("StorageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Server.Models.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("colorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

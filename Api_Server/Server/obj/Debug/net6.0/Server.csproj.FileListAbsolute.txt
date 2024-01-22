@@ -255,3 +255,5 @@ C:\Users\Hiu'\Desktop\DoAnHK6\Api_Server\Server\obj\Debug\net6.0\refint\Server.d
 C:\Users\Hiu'\Desktop\DoAnHK6\Api_Server\Server\obj\Debug\net6.0\Server.pdb
 C:\Users\Hiu'\Desktop\DoAnHK6\Api_Server\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
 C:\Users\Hiu'\Desktop\DoAnHK6\Api_Server\Server\obj\Debug\net6.0\ref\Server.dll
+C:\Users\Hiu'\Desktop\DoAnHK6\Api_Server\Server\bin\Debug\net6.0\PagedList.dll
+C:\Users\Hiu'\Desktop\DoAnHK6\Api_Server\Server\bin\Debug\net6.0\PagedList.Mvc.dll

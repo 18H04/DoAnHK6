@@ -73,7 +73,7 @@ namespace Server.Controllers
             var comment = await _context.Comments.FindAsync(id);
             if(comment == null) { return NotFound(); }
 
-            _context.Comments.Remove(comment);
+            comment.Status = false;
             await _context.SaveChangesAsync();
 
             return NoContent();
