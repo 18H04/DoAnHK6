@@ -42,26 +42,36 @@ const ProductAdd = () => {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setImage(file);
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setImage(null);
+        }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!product.SKU || !product.productName || !product.productTypeId || !image) {
-            setError('Vui lòng điền đầy đủ thông tin.');
-            return;
-        }
+        // if (!product.SKU || !product.productName || !product.productTypeId || !image) {
+        //     setError('Vui lòng điền đầy đủ thông tin.');
+        //     return;
+        // }
 
         const formData = new FormData();
-        formData.append('image', image);
+        formData.append('thumbnail', image);
 
         Object.keys(product).forEach(key => {
             formData.append(key, product[key]);
         });
-        await axiosClient.post("/phones", formData)
+        await axiosClient.post("/phones", product)
             .then(res => {
                 console.log("Create complete");
-                navigate("/phones");
+                navigate("/products");
             })
             .catch(error => {
                 console.error("Error adding product: ", error);
@@ -80,7 +90,7 @@ const ProductAdd = () => {
     return (
         <Layout>
             <h2>Thêm sản phẩm mới</h2>
-            <form className="col-md-3">
+            <form className="col-md-3" encType="multipart/form-data">
                 {error && <div className="alert alert-danger">{error}</div>}
                 <div className="mb-3">
                     <label>SKU</label>

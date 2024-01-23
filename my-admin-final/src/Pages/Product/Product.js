@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../Component/Layouts/Layout'
 import axiosClient from '../../Component/axiosClient';
-import { Button, Col, Modal, Pagination, Row, Table } from 'react-bootstrap';
+import { Button, Modal, Pagination, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBox, faCheck, faCirclePlus, faEdit, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const itemsPerPage = 10;
 
 const Product = () => {
-    const [products, setproducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [productModel, setProductModel] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedProduct, setSelectedProduct] = useState([]);
@@ -21,7 +21,7 @@ const Product = () => {
     useEffect(() => {
         axiosClient.get('/phones')
             .then((res) => {
-                setproducts(res.data);
+                setProducts(res.data);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -58,8 +58,7 @@ const Product = () => {
     const handleCloseDelete = () => setShowDelete(false);
 
     const handleDelete = (id) => {
-        // axiosClient.delete(`/phones/${selectedProduct.id}`);
-        console.log("Delete complete");
+        axiosClient.delete(`/phones/${selectedProduct.id}`);
         setShowDelete(false);
     };
 

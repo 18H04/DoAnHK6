@@ -32,7 +32,7 @@ const UserAdd = () => {
         navigate('/users');
       })
       .catch((error) => {
-        console.error("Error adding product:", error);
+        console.error("Error adding user:", error);
         if (error.response && error.response.status === 500) {
           setError("Có lỗi xảy ra trong quá trình tạo tài khoản.");
         }

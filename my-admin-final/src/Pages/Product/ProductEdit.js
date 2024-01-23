@@ -46,32 +46,42 @@ const ProductEdit = () => {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setImage(file);
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setImage(null);
+        }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // const formData = new FormData();
-        // formData.append('image',image);
+        const formData = new FormData();
+        formData.append('thumbnail',image);
 
-        // Object.keys(product).forEach(key => { 
-        //     formData.append(key, product[key]);
-        // });
+        Object.keys(product).forEach(key => { 
+            formData.append(key, product[key]);
+        });
 
-        // try {
-        //     await axiosClient.put(`/phones/${id}`, formData);
-        //     navigate("/phones");
-        // }
-        // catch (error){
-        //     console.error("Error fetching data:", error);
-        // }
+        try {
+            await axiosClient.put(`/phones/${id}`, product);
+            navigate("/products");
+        }
+        catch (error){
+            console.error("Error fetching data:", error);
+        }
         console.log("Updating complete");
     }
 
     return (
         <Layout>
             <h2>Sửa sản phẩm</h2>
-            <form className="col-md-3">
+            <form className="col-md-3" encType="multipart/form-data">
                 <div className="mb-3">
                     <label>SKU</label>
                     <input type="text" className="form-control" name="SKU" value={product.SKU || ''} onChange={handleChange} />
