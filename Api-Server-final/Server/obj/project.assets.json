@@ -11943,11 +11943,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hiu'\\Desktop\\Api_Server\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\Hiu'\\Desktop\\DoAnHK6\\Api-Server-final\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\Hiu'\\Desktop\\Api_Server\\Server\\Server.csproj",
+      "projectPath": "C:\\Users\\Hiu'\\Desktop\\DoAnHK6\\Api-Server-final\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\Hiu'\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hiu'\\Desktop\\Api_Server\\Server\\obj\\",
+      "outputPath": "C:\\Users\\Hiu'\\Desktop\\DoAnHK6\\Api-Server-final\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11969,8 +11969,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Hiu'\\Desktop\\Api_Server\\SendEmail\\SendEmail.csproj": {
-              "projectPath": "C:\\Users\\Hiu'\\Desktop\\Api_Server\\SendEmail\\SendEmail.csproj"
+            "C:\\Users\\Hiu'\\Desktop\\DoAnHK6\\Api-Server-final\\SendEmail\\SendEmail.csproj": {
+              "projectPath": "C:\\Users\\Hiu'\\Desktop\\DoAnHK6\\Api-Server-final\\SendEmail\\SendEmail.csproj"
             }
           }
         }

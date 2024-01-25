@@ -223,7 +223,7 @@ namespace Server.Controllers
 
         [HttpPost]
         [Route("register-admin")]
-        public async Task<IActionResult> RegisterAdmin(string Username, string Password, string Email)
+        public async Task<IActionResult> RegisterAdmin(string Username, string Password, string Email, string FullName)
         {
             var userExists = await _userManager.FindByNameAsync(Username);
             if (userExists != null)
@@ -233,7 +233,8 @@ namespace Server.Controllers
             {
                 Email = Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = Username
+                UserName = Username,
+                FullName = FullName
             };
             var result = await _userManager.CreateAsync(user, Password);
             if (!result.Succeeded)

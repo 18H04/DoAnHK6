@@ -25,7 +25,7 @@ const ProductEdit = () => {
             .then(res => {
                 setProduct(res.data);
                 if (res.data.thumbnail) {
-                    setImage(`https://localhost:7186/images/product/Thumbnail/${res.data.thumbnail}`);
+                    setImage(`https://localhost:7186/Thumbnail/${res.data.thumbnail}`);
                 }
             })
             .catch((error) => console.error("Error fetching data:", error));

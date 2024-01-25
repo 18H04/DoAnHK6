@@ -12,8 +12,8 @@ using Server.Data;
 namespace Server.Migrations
 {
     [DbContext(typeof(PhoneshopIdentityContext))]
-    [Migration("20240119142125_init3")]
-    partial class init3
+    [Migration("20240125162550_Full_Database")]
+    partial class Full_Database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -707,6 +707,9 @@ namespace Server.Migrations
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

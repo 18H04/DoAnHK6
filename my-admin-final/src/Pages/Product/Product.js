@@ -109,7 +109,7 @@ const Product = () => {
                               <tr key={item.id}>
                                   <td>{item.id}</td>
                                   <td>{item.thumbnail && (
-                                    <img src={`https://localhost:7186/images/product/Thumbnail/${item.thumbnail}`} style={{width: "100px"}}/>
+                                    <img src={`https://localhost:7186/Thumbnail/${item.thumbnail}`} style={{width: "100px"}}/>
                                   )}
                                   </td>
                                   <td>{item.name}</td>
