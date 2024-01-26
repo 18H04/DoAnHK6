@@ -253,6 +253,18 @@ namespace Server.Controllers
             return Ok();
         }
 
+        [HttpDelete("{username}")]
+        public async Task<IActionResult> DeleteUser(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null) { return NotFound(); }
+
+            user.IsDeleted = true;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("forgot-password")]
