@@ -1,0 +1,60 @@
+.favorite-button {
+    background-color: #ffffff;
+    color: red;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.favorite-button:hover {
+    background-color: #f1efef;
+}
+
+.favorite-button.favorited {
+    color: #e74c3c;
+}
+
+.favorite-button.favorited:hover {
+    color: #c0392b;
+}
+
+/* Add this CSS to your stylesheet */
+
+.deletewishlist {
+    position: absolute;
+    right: 15px;
+    /* height: 50px; */
+    z-index: 2;
+}
+
+.deletewishlist:hover {
+    cursor: pointer;
+    /* background-color: #cc0000; */
+    /* Darker red background color on hover */
+}
+
+/* CSS */
+.btn-delete-wishlist {
+    background-color: #dc3545;
+    /* Màu nền đỏ, bạn có thể thay đổi màu sắc theo ý muốn */
+    color: #fff;
+    /* Màu chữ trắng */
+    padding: 10px 20px;
+    /* Kích thước padding */
+    font-size: 16px;
+    /* Kích thước chữ */
+    border: none;
+    /* Loại bỏ đường viền */
+    border-radius: 5px;
+    /* Bo góc nút */
+   
+   
+}
+
+/* Hover effect */
+.btn-delete-wishlist:hover {
+    background-color: #c82333;
+    /* Màu nền đỏ sáng khi di chuột qua nút */
+}

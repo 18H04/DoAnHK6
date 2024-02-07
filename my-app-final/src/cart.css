@@ -1,0 +1,262 @@
+.imgcart {
+    height: 120px;
+
+}
+
+.col-md-6 table tbody tr td {
+    background-color: white;
+
+}
+
+.priceCart {
+    padding-top: 40px;
+    padding-bottom: 5px;
+}
+
+
+.col-md-6 table tr td:nth-child(1) {
+    background-color: white;
+    /* Đặt màu nền thành màu trắng */
+}
+
+.col-md-6 {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* nút xóa tất cả */
+
+
+.delete {
+    float: left;
+    /* display: block; */
+    padding: 8px 16px;
+    /* Điều chỉnh kích thước padding để thay đổi kích thước của nút */
+    font-size: 14px;
+    /* Điều chỉnh kích thước font */
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #386641;
+    border-radius: 5px;
+    color: #386641;
+    background-color: #5bc06f;
+    transition: background-color 0.3s, color 0.3s;
+    width: 20%;
+    margin-left: 80%;
+    margin-top: 15px;
+}
+
+.delete:hover {
+    background-color: red;
+    color: white;
+}
+
+/*----------------------------- product cart------------------------- */
+
+.containercart {
+    max-width: 800px;
+    /* Điều chỉnh chiều rộng tối đa của khung giỏ hàng */
+    margin: 0 auto;
+    /* Canh giữa khung giỏ hàng */
+    padding: 20px;
+    /* Khoảng cách giữa nội dung và viền của khung giỏ hàng */
+    background-color: #f5f5f5;
+    /* Màu nền của khung giỏ hàng */
+    border-radius: 8px;
+    /* Góc bo tròn của khung giỏ hàng */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Đổ bóng cho khung giỏ hàng */
+}
+
+.rowCart {
+    display: flex;
+    justify-content: space-between;
+    /* Canh giữa các phần tử trong dòng */
+}
+
+.sizecart {
+    flex: 1;
+    /* Phần tử sẽ chiếm hết phần còn lại của dòng */
+}
+
+
+
+
+/* thẻ span  */
+.custom-span {
+    padding: 10px;
+    /* Đặt giá trị padding theo nhu cầu của bạn */
+
+}
+
+.quality {
+    border: 1px solid black;
+    width: 50px;
+    height: 32px;
+    border-left: 0;
+    border-right: 0;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: text;
+    border-radius: 0;
+    -webkit-appearance: none;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .09);
+}
+
+tr:nth-child(2) {
+    background-color: #ddd;
+    /* Màu nền cho hàng thứ hai /
+color: #fff; / Màu chữ trên nền màu */
+}
+
+tr:nth-child(3) {
+    color: red;
+    font-weight: bold;
+}
+
+.brandname {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+/* styles.css */
+/* Trong file CSS của bạn hoặc thẻ style của React component */
+.quantity-container {
+    /* Thêm padding hoặc margin nếu cần */
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button {
+    background-color: #4CAF50;
+    /* Màu nền */
+    color: white;
+    /* Màu chữ */
+    border: none;
+    padding: 8px 16px;
+    /* Điều chỉnh khoảng cách giữa nút và chữ */
+    cursor: pointer;
+    border-radius: 4px;
+    /* Để tạo góc bo tròn nếu bạn muốn */
+    margin: 0 4px;
+    /* Điều chỉnh khoảng cách giữa các nút */
+    font-size: 16px;
+    /* Điều chỉnh kích thước chữ nếu cần */
+}
+
+.quantity-input {
+    width: 40px;
+    /* Điều chỉnh chiều rộng của input */
+    text-align: center;
+    /* Canh giữa nội dung trong input */
+    margin: 0 8px;
+    /* Điều chỉnh khoảng cách giữa input và nút */
+}
+
+/* Thêm hover effect cho nút quantity-button nếu bạn muốn */
+.quantity-button:hover {
+    background-color: #45a049;
+    /* Màu nền khi di chuột qua */
+}
+
+/* styles.css */
+.shopping-cart {
+    /* border: 1px solid #ddd; */
+    padding: 20px;
+    margin: 20px;
+}
+
+.cart-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    float: center;
+    margin: auto;
+    width: 64%;
+}
+
+/* nút xóa sản phẩm */
+.btndelete {
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+
+}
+
+/* kich thước tên sp loại và giá */
+.OnQuality {
+    font-size: 20px;
+}
+
+
+/* BLOG SẼ ĐƯỢC THIẾT KẾ Ở ĐÂY********************
+******************
+********************************
+******************************* */
+.container-Blogs {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.H1-Blogs {
+    text-align: center;
+    color: #c51616;
+
+}
+
+.H2-Blogs {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+/* Style paragraphs */
+.container-Blogs p {
+    line-height: 1.5;
+}
+
+/* Style the read more link */
+.read-more {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.read-more:hover {
+    background-color: #2980b9;
+}
+
+/* Style the footer */
+.container-Blogs footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+}
+
+.hearticon {
+    font-size: 27px;
+    color: red;
+}

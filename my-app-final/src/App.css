@@ -1,0 +1,729 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Slideshow {
+  display: flex !important;
+  justify-content: center;
+
+}
+
+.icon-heart1 {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-heart2 {
+  width: 20px;
+  height: 20px;
+}
+
+/* giao diện đăng nhập */
+
+.body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.containerLogin {
+  background-color: #e9e5e5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  max-width: 100%;
+  /* Đảm bảo không vượt quá chiều rộng của phần tử cha */
+  margin: 0 auto;
+  /* Canh giữa container trong phần tử cha */
+  overflow: hidden;
+
+}
+
+.login-container {
+  background-color: #faf6f6;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #80888e;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(20, 18, 18, 0.6);
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.dangnhap {
+  text-align: center;
+  font-weight: bold;
+}
+
+.form_login {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 8px;
+}
+
+.loginname {
+  padding-right: 90px;
+}
+
+.loginpass {
+  padding-right: 122px;
+}
+
+.inputLogin {
+  /* padding: 8px;
+  margin-bottom: 16px;
+  border-radius: 3px;
+  border: 1.5px solid #d71e09;
+
+  border-radius: 3px;
+  transition: border-color 0.3s; */
+  height: 100%;
+  width: 100%;
+  padding-left: 2.81rem;
+  font-size: 16px;
+  outline: none;
+  background-color: var(--bg);
+  color: var(--main-color);
+  border: none;
+  border-radius: 1.52rem;
+  box-shadow: inset 1.5px 1.5px 4.5px;
+
+}
+
+.inputLogin:focus {
+  border-color: #45a049;
+  /* Màu đường biên khi input được focus */
+  box-shadow: inset 1px 1px 2px var(--med),
+    inset -1px -1px 2px var(--light);
+}
+
+.btnLogin {
+  background-color: #45a049;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btnLogin:hover {
+  background-color: #3498db;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input-icon i {
+  color: #ccc;
+}
+
+/* src/components/payment.css */
+.formPay {
+  border: 2px solid #3498db;
+  /* Viền đôi với màu #3498db */
+  border-radius: 5px;
+  /* Góc bo tròn cho viền */
+  box-shadow: 1px 1px 15px #888;
+  /* Đổ bóng với màu và độ rộng tùy chỉnh */
+  padding: 20px;
+  /* Đổ bóng */
+  display: inline-block;
+  width: min-content;
+  /* Chiều rộng tối thiểu cần thiết để chứa nội dung */
+  height: min-content;
+  /* Chiều cao tối thiểu cần thiết để chứa nội dung */
+  width: min-content;
+  /* Chiều rộng tối thiểu cần thiết để chứa nội dung */
+  height: min-content;
+  /* Chiều cao tối thiểu cần thiết để chứa nội dung */
+  display: flex;
+  justify-content: center;
+  /* Canh giữa theo chiều ngang */
+  align-items: center;
+  /* Canh giữa theo chiều dọc */
+  height: 100vh;
+  /* Chiều cao của viewport */
+  width: fit-content;
+  /* Kích thước của form sẽ tăng theo nội dung */
+  padding: 20px;
+  height: 300px;
+  margin: auto;
+
+}
+
+.tablePay {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  /* background-color: #f4f4f4; */
+  border-radius: 8px;
+
+}
+
+.tablePay tr:nth-child(2) {
+  background-color: white;
+}
+
+.inputPay {
+  background-color: #dedcdc;
+}
+
+.btnPay {
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btnPay:hover {
+  background-color: #3498db;
+}
+
+/* thiết kế form đăng kí */
+
+.bodyRegister {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.inputRegister {
+  height: 100%;
+  width: 100%;
+  padding-left: 2.81rem;
+  font-size: 16px;
+  outline: none;
+  background-color: var(--bg);
+  color: var(--main-color);
+  border: none;
+  border-radius: 1.52rem;
+  box-shadow: inset 1.5px 1.5px 4.5px;
+}
+
+.inputRegister:focus {
+  border-color: #45a049;
+  /* Màu đường biên khi input được focus */
+  box-shadow: inset 1px 1px 2px var(--med),
+    inset -1px -1px 2px var(--light);
+}
+
+.containerRegister {
+  background-color: #e9e5e5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  margin: auto;
+}
+
+.register-form {
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dangky {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+#text:focus {
+  border-color: green;
+  /* Màu xanh khi input được focus */
+}
+
+.labelRegister {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btnRegister {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnRegister:hover {
+  background-color: #0056b3;
+}
+
+/* ngôi sao đánh giá */
+.star-rating {
+  font-size: 24px;
+}
+
+.star {
+  color: #ffd700;
+  /* Màu vàng hoặc màu khác tùy thuộc vào sự thiết kế của bạn */
+}
+
+/* card sản phẩm */
+.namePhones {
+  font-weight: bold;
+  font-size: 23px;
+  color: #282c34;
+}
+
+/* flashsale */
+
+@keyframes colorBlink {
+  0% {
+    color: red;
+  }
+
+  25% {
+    color: blue;
+  }
+
+  50% {
+    color: red;
+  }
+
+  75% {
+    color: blue;
+  }
+
+  100% {
+    color: red;
+  }
+
+
+}
+
+.blinking-text {
+  animation: colorBlink 2s infinite;
+}
+
+/* email xác nhận thành công thất bại */
+/* EmailConfirmation.css */
+
+.emailConfir.success {
+  color: blue;
+  /* Đặt màu sắc tùy ý cho trạng thái thành công */
+}
+
+.emailConfir.failed {
+  color: red;
+  /* Đặt màu sắc tùy ý cho trạng thái thất bại */
+}
+
+.emailConfir.undefined {
+  color: gray;
+  /* Đặt màu sắc tùy ý cho trạng thái không xác định */
+}
+
+
+/* chỉnh khung resetpassword */
+.resetPassword {
+  height: 100%;
+  width: 100%;
+  padding-left: 2.81rem;
+  font-size: 16px;
+  outline: none;
+  background-color: var(--bg);
+  color: var(--main-color);
+  border: none;
+  border-radius: 1.52rem;
+  box-shadow: inset 1.5px 1.5px 4.5px;
+}
+
+.buttonDesig {
+  margin: 0.9rem 0;
+  width: 100%;
+  height: 2.5rem;
+  font-size: 19px;
+  background-color: #5bafe6;
+  border: none;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  border-radius: 1.52rem;
+  box-shadow: 1.5px 1.5px 4.5px;
+}
+
+.buttonDesig:focus {
+  color: var(--main-color);
+  box-shadow: inset 1.5px 1.5px 4.5px var(--med),
+    inset -4.5px -4.5px 9.5px var(--light);
+}
+
+
+.resetPassword:focus {
+  border-color: #45a049;
+  /* Màu đường biên khi input được focus */
+  box-shadow: inset 1px 1px 2px var(--med),
+    inset -1px -1px 2px var(--light);
+}
+
+
+
+/********************************************
+**********************
+ css dùng chung cho tất cả các khung input
+  *************************************
+ ***********
+ */
+.hov-img0 {
+  text-align: center;
+  justify-content: center;
+}
+
+
+/* CODE CHO FILTER */
+
+
+.flex-w {
+  display: flex;
+  flex-wrap: wrap;
+    font-family: "Arial", sans-serif;
+}
+
+.filter-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #007bff;
+  font-size: 17px;
+  outline: none;
+  box-shadow: none;
+}
+
+.accordion-body {
+  width: 800px;
+}
+
+.accordion {
+  background-color: #f9f9f9;
+  outline: none;
+  border-radius: 5px;
+}
+
+.filter-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 64px;
+  height: 144px;
+}
+
+.filter-button:hover {
+  background-color: #18671c;
+}
+
+.selected {
+  background-color: #45a049;
+  color: white;
+}
+
+.slider-container {
+  margin-top: 20px;
+}
+
+.slider-value {
+  text-align: center;
+}
+
+.accordion-button.collapsed {
+  padding: 0px white;
+}
+
+/* CHỈNH CÁC NÚT CHỌN FILTER */
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  line-gap-override: 200px;
+}
+
+.filter-section {
+  width: 100%;
+  max-width: 200px;
+  /* Adjust as needed */
+}
+
+.filter-options {
+  display: grid;
+  /* grid-template-columns: repeat(2, 1fr); */
+  gap: 5px;
+  margin-right: 10px;
+}
+
+.selected {
+  background-color: #45a049;
+  color: white;
+}
+
+.price-range {
+  margin-top: 10px;
+}
+
+.filter-options button {
+  background-color: #ddd;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-options button:hover {
+  background-color: #45a049;
+  color: white;
+}
+
+/* Add styles for the color options */
+.filter-options button.color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+  padding: 0;
+}
+
+.filter-options button.color.selected {
+  background-color: #45a049;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+  /* Optional: Add a subtle shadow effect */
+  border: 2px solid #ff0000;
+  /* Add a red border to the selected buttons */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.filter-options strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.col-overflow {
+  overflow-y: auto;
+  /* Bật thanh cuộn khi nội dung vượt quá kích thước */
+  max-height: 300px;
+  /* Đặt chiều cao tối đa cho thanh cuộn */
+}
+
+.price-range {
+  margin-top: 10px;
+}
+
+.price-range p {
+  text-align: center;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.filter-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  height: 60px;
+  width: 130px;
+}
+
+.filter-button:hover {
+  background-color: #45a049;
+}
+
+.rc-slider.rc-slider-horizontal {
+  width: 130px;
+}
+
+
+
+/* CARD CSS */
+.block2 {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.imgPhones {
+
+  margin-left: 1px;
+  margin-right: 9px;
+}
+
+/* Sale Css
+ */
+/* Các styles cho component chính */
+.container-sale {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.H1-sale {
+  text-align: center;
+  color: #3498db;
+  font-size: 24px;
+}
+
+.H2-sale {
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.container-sale p {
+  line-height: 1.5;
+}
+
+.read-more {
+  display: inline-block;
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.read-more:hover {
+  background-color: #2980b9;
+}
+
+.container-sale footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+}
+
+/* Các styles cho class thích học */
+.thich-hoc {
+  font-weight: bold;
+  color: #27ae60;
+}
+
+/* Các styles cho class thiết kế mới */
+.thiet-ke-moi {
+  font-style: italic;
+  color: #e74c3c;
+}
+
+.user-name {
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+#logout-sidebar {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 130px;
+  border: none;
+  border-radius: 0px 0px 5px 5px;
+  justify-content: center;
+  text-align: center;
+  display: '${logoutVisible ? 'block': 'none'}';
+}
+

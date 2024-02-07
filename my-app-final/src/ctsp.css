@@ -1,0 +1,473 @@
+/********************************************
+**********************
+ css dùng cho trái tim vaf mua ngay
+  *************************************
+ ***********
+ *//* CSS */
+
+/* Font Awesome Styles - Make sure to include Font Awesome library */
+.favorite-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(229, 6, 169, 0.5);
+}
+
+
+.fa-heart {
+    display: block;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    font-size: 20px;
+    animation: fa-heart .5s infinite alternate linear;
+}
+
+@keyframes fa-heart {
+    from {
+        transform: scale(.7);
+
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.pay {
+    display: block;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    font-size: 20px;
+    color: rgb(248, 244, 244);
+    font-weight: bold;
+    background-color: orange;
+    width: 120px;
+    height: 60px;
+}
+
+.ghtn {
+    font-size: 10px;
+}
+
+/************************************** *********** 
+*****************************
+******** ***********  NÚT CHỌN MÀU ******************
+******************* *********** */
+/* Style cho container chứa các nút màu */
+.color-container {
+    display: flex;
+
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+
+/* Style cho nút màu */
+.color-button {
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Style khi nút màu được chọn */
+.color-button.selected {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* Hover effect */
+.color-button:hover {
+    background-color: #f2f2f2;
+}
+
+/* Style cho màu sắc của nút màu */
+.color-button span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Style cho màu sắc của nút màu khi được chọn */
+.color-button.selected span {
+    background-color: #3498db;
+}
+
+/* Style cho container chứa các nút màu */
+/************************************** *********** 
+*****************************
+******** *********** CTSP ******************
+******************* *********** */
+/* .containerDetail{
+
+ 
+} */
+.containerInfor {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Một cột */
+    place-items: center;
+
+}
+
+/************************************** *********** 
+*****************************
+******** *********** GIỚI THIỆU THÊM VỀ SỰ KIỆN APPLE  ******************
+******************* *********** */
+.containerPr {
+    overflow-y: auto;
+        /* Bật thanh cuộn khi nội dung vượt quá kích thước */
+        max-height: 500px;
+        /* Đặt chiều cao tối đa cho thanh cuộn */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.p1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.p2,
+.p3,
+.p4,
+.p5 {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Thêm margin-top cho các đoạn văn bản trừ p2 */
+.p3,
+.p4,
+.p5 {
+    margin-top: 20px;
+}
+
+/* Tạo border-bottom cho các tiêu đề */
+.p2,
+.p3,
+.p4,
+.p5 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+/* Style cho các thông tin đặc biệt (ví dụ: sản phẩm nổi tiếng) */
+.special-info {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 8px;
+
+}
+
+.special {
+    font-weight: bold;
+    color: red;
+}
+
+.specialPhone {
+    font-weight: bold;
+    color: rgb(212, 32, 32);
+    font-size: 13px;
+    margin-bottom: 4px;
+    margin-top: 10px;
+}
+
+/************************************** *********** 
+*****************************
+******** *********** NÚT DUNG LƯỢNG  ******************
+******************* *********** */
+/* Style cho container chứa nút chọn dung lượng lưu trữ */
+.storage {
+    display: flex;
+    gap: 10px;
+}
+
+/* Style cho nút chọn dung lượng lưu trữ */
+.storage-button {
+    padding: 10px 16px;
+    font-size: 14px;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style khi nút được chọn */
+.storage-button.selected {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Hover effect */
+.storage-button:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/************************************** *********** 
+*****************************
+******** ***********   ******************
+******************* *********** */
+/* Style cho container chứa nút chọn dung lượng lưu trữ */
+/* Style cho container chứa thông tin điện thoại */
+.containerInfor {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+}
+
+/* Style cho mỗi dòng thông tin */
+.containerInfor div {
+    margin-bottom: 16px;
+}
+
+/* Style cho các tiêu đề thông tin */
+.containerInfor p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Tạo border-bottom cho các dòng thông tin */
+.containerInfor p:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+
+/* nút mua và yêu thích */
+.buttonAccept {
+    margin-top: 10px;
+}
+
+/************************************** *********** 
+*****************************
+******** ***********CHỈNH SỬA ẢNH CÓ TRONG SLIDE SHOW CTSP   ******************
+******************* *********** */
+/************************************** *********** 
+*****************************
+******** ***********   ******************
+******************* *********** */
+.imgDetails {
+    width: 500px;
+    height: 400px;
+
+}
+
+.DetailSlideShow {
+    text-align: center;
+}
+
+.buttonslide {
+    margin: 5px;
+}
+
+/* chi tiết các ảnh mini duwsio slide */
+
+
+.buttonslide {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+
+    /* Màu của nút chuyển ảnh */
+}
+
+.thumbnail {
+    margin-right: 5px;
+    width: 80px;
+    /* Điều chỉnh kích thước của mini ảnh */
+    height: 60px;
+    cursor: pointer;
+    /* transition: opacity 0.3s ease-in-out; */
+}
+
+.thumbnail:hover {
+    opacity: 0.5;
+    opacity: 1;
+}
+
+.selected {
+    border: 2px solid #007bff;
+    /* Màu đường viền khi ảnh được chọn */
+}
+
+.DetailSlideShow {
+    margin-bottom: 19px;
+}
+
+.thumbnail.nearby {
+    opacity: 0.7;
+    /* Điều chỉnh mức độ mờ tùy chọn */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.thumbnail:last-child {
+    margin-right: 0;
+    /* Loại bỏ khoảng cách cho ảnh cuối cùng */
+}
+
+/************************************** *********** 
+***********************************************
+******************* *********** */
+/************************************** *********** 
+*****************************
+******** ***********   ******************
+******************* *********** */
+/* chỉnh toàn bộ bố cục viền ngoài cho detail */
+.containerDetail {
+    background-color: #f5f5f5;
+    /* Màu nền */
+    border: 1px solid #ddd9d9;
+    /* Đường viền */
+    border-radius: 10px;
+    /* Bo tròn góc */
+    padding: 20px;
+    /* Khoảng trắng bên trong */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Đổ bóng */
+    margin: auto;
+}
+
+/************************************** *********** 
+*********************THÊM ƯU ĐÃI VÀ KHUYẾN MÃI********
+******** ***********   ******************
+******************* *********** */
+
+.additional-offers-container {
+    
+    width: 80%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+    /* Bật thanh cuộn khi nội dung vượt quá kích thước */
+    max-height: 300px;
+    /* Đặt chiều cao tối đa cho thanh cuộn */
+}
+
+.additional-offers-container h2 {
+    color: #e70a0a;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.additional-offers-container ul {
+
+    padding: 0;
+}
+
+.additional-offers-container li {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Apply animation to the element */
+.sale {
+    animation: blink 1s infinite;
+    /* 1s là thời gian của mỗi chu kỳ blink */
+}
+
+
+
+/* payment */
+
+
+.payment-container {
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow:1px 10px 10px 10px rgba(0, 0, 0, 0.5);
+    width: 400px;
+}
+
+.payment-info,
+.payment-form {
+    margin-bottom: 20px;
+}
+
+
+
+.payment-option {
+    margin-bottom: 10px;
+}
+
+.payment-lable {
+    margin-left: 5px;
+    color: #555;
+}
+
+.btnpayment {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.btnpayment:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,15 @@
+.slideshow {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    height:100%;
+    padding-top: 150px;
+}
+
+.slideshow img {
+    margin-top: 50px;
+    width: 60%;
+
+    height: 450px;
+
+}
