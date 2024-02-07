@@ -69,7 +69,7 @@ const ProductEdit = () => {
         });
 
         try {
-            await axiosClient.put(`/phones/${id}`, product);
+            await axiosClient.put(`/phones/${id}`, formData);
             navigate("/products");
         }
         catch (error){

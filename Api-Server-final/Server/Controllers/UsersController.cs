@@ -231,9 +231,9 @@ namespace Server.Controllers
 
             User user = new User()
             {
-                Email = Email,
-                SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = Username,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                Email = Email,
                 FullName = FullName
             };
             var result = await _userManager.CreateAsync(user, Password);

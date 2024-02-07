@@ -17,7 +17,7 @@ const Invoice = () => {
     useEffect(() => { 
         axiosClient.get('/invoices')
             .then((res) => {
-                const invoicesWithStatus = res.data.map(item => ({ ...item, statusInvoice: "approved" }));
+                const invoicesWithStatus = res.data.map(item => ({ ...item, statusPayMent: 1 }));
                 setInvoices(invoicesWithStatus);
             })
             .catch((error) => {
@@ -47,14 +47,14 @@ const Invoice = () => {
 
     const handleStatusChange = async (invoiceId, newStatus) => {
         try {
-            await axiosClient.patch(`/invoices/statusInvoice/${invoiceId}`, { statusInvoice: newStatus }, {
+            await axiosClient.patch(`/invoices/statusPayment/${invoiceId}`, { statusPayMent: newStatus }, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
             const updatedInvoiceList = invoices.map(invoiceItem => {
                 if (invoiceItem.id === invoiceId) {
-                    return { ...invoiceItem, StatusInvoice: newStatus };
+                    return { ...invoiceItem, statusPayMent: newStatus };
                 }
                 return invoiceItem;
             });
@@ -94,26 +94,26 @@ const Invoice = () => {
                                             <span style={{marginRight:"5px", color:"orange"}}> Đã duyệt </span>
                                             <input
                                                 type="radio"
-                                                checked={selectedOption === "approved"}
+                                                checked={selectedOption === 1}
                                                 style={{marginRight:"10px"}}
-                                                onChange={() => handleStatusChange(item.id, "approved")}                                                
+                                                onChange={() => handleStatusChange(item.id, 1)}                                                
                                             />
                                         </label>
                                         <label>
                                             <span style={{marginRight:"5px",color:"green"}}> Đã thanh toán </span>
                                             <input
                                                 type="radio"
-                                                checked={selectedOption === "paid"}
+                                                checked={selectedOption === 2}
                                                 style={{ marginRight: "10px" }}
-                                                onChange={() => handleStatusChange(item.id, "paid")}
+                                                onChange={() => handleStatusChange(item.id, 2)}
                                             />
                                         </label>
                                         <label>
                                         <span style={{marginRight:"5px", color:"red"}}> Đã huỷ </span>
                                             <input
                                                 type="radio"
-                                                checked={selectedOption === "cancelled"}
-                                                onChange={() => handleStatusChange(item.id, "cancelled")}
+                                                checked={selectedOption === 3}
+                                                onChange={() => handleStatusChange(item.id, 3)}
                                             />
                                         </label>       
                                     </div>
@@ -128,19 +128,20 @@ const Invoice = () => {
             <Modal show={show} size="lg" onHide={handleClose} centered>
                 <Modal.Body>
                     <h2>Chi tiết hoá đơn [{selectedInvoices && selectedInvoices.code}]</h2>
-                    <p>{selectedInvoices && selectedInvoices.shippingAddress }</p>
+                    <p>Địa chỉ: {selectedInvoices && selectedInvoices.shippingAddress }</p>
                     <p>Tên khách hàng: {selectedInvoices && selectedInvoices.user && selectedInvoices.user.fullName}</p>
                     <p>SĐT: {selectedInvoices && selectedInvoices.shippingPhone}</p>
+                    <p>Hình thức thanh toán: {selectedInvoices && selectedInvoices.paymentMethod && selectedInvoices.paymentMethod.nameMethod}</p>
                     <span style={{ marginRight: "450px" }}>Tên sản phẩm</span>
                     <span style={{ marginRight: "80px" }}>SL</span>
                     <span style={{ marginRight: "10px" }}>Giá tiền</span>
                     <hr />
                     <span style={{ marginRight: "420px" }}>{selectedModels && selectedModels.phone && selectedModels.phone.name}</span>
-                    <span style={{ marginRight: "90px" }}>{selectedInvoiceDetails && selectedInvoiceDetails.quantity}</span>
+                    <span style={{ marginRight: "80px" }}>{selectedInvoiceDetails && selectedInvoiceDetails.quantity}</span>
                     <span style={{ marginRight: "10px" }}>{selectedInvoiceDetails && selectedInvoiceDetails.unitPrice}</span>
                     <hr />
                     <span style={{marginRight:"500px"}}>Tổng tiền</span>
-                    <span style={{ marginLeft: "70px", marginRight: "30px" }}>{selectedInvoices && selectedInvoices.total} VND</span>
+                    <span style={{ marginLeft: "70px", marginRight: "20px" }}>{selectedInvoices && selectedInvoices.total} VND</span>
                 </Modal.Body>
                 <Modal.Footer>
                     

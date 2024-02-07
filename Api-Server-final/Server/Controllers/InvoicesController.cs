@@ -72,6 +72,29 @@ namespace Server.Controllers
             return NoContent();
         }
 
+        [HttpPatch("statusPayment/{id}")]
+        public async Task<IActionResult> UpdatePaymentStatus(int id, [FromBody] int statusPayment)
+        {
+            var invoice = await _context.Invoices.FindAsync(id);
+            if(invoice == null)
+            {
+                return NotFound();
+            }
+
+            _context.Entry(invoice).State = EntityState.Modified;
+
+            try
+            {
+                invoice.StatusPayMent = statusPayment;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
         {
@@ -103,12 +126,14 @@ namespace Server.Controllers
         public async Task<IActionResult> CreateInvoice([FromBody] Invoice invoice)
         {
             string name = User.Identity.Name;
-            var user = await  _userManager.FindByNameAsync(name);
+            var user = await _userManager.FindByNameAsync(name);
             try
             {
+                string maDonHang = "DH" + DateTime.Now.ToString("yyyyMMddHHmmss");
+
                 var newInvoice = new Invoice
                 {
-                    Code = invoice.Code,
+                    Code = maDonHang,
                     IssuedDate = invoice.IssuedDate,
                     ShippingPhone = invoice.ShippingPhone,
                     ShippingAddress = invoice.ShippingAddress,
@@ -120,7 +145,8 @@ namespace Server.Controllers
 
                 _context.Invoices.Add(newInvoice);
                 await _context.SaveChangesAsync();
-
+                int invoiceId = newInvoice.Id;
+                await PostInvoiceDetail(invoiceId);
                 return Ok(new
                 {
                     Status = "Successful"
@@ -134,6 +160,49 @@ namespace Server.Controllers
                     Message = $"An error occurred: {ex.Message}"
                 });
             }
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        [Route("postinvoicedetail")]
+        public async Task<ActionResult<InvoiceDetail>> PostInvoiceDetail(int invoiceId)
+        {
+            var username = User.Identity.Name;
+            var user = await _userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var existingCart = _context.Carts
+    .Include(c => c.PhoneModel)
+    .Where(c => c.UserId == user.Id)
+    .ToList();
+
+            if (existingCart.Any())
+            {
+                var invoiceDetails = new List<InvoiceDetail>();
+
+                foreach (var item in existingCart)
+                {
+                    var newInvoiceDetail = new InvoiceDetail
+                    {
+                        InvoiceId = invoiceId,
+                        PhoneModelId = item.PhoneModelId,
+                        Quantity = item.Quantity,
+                        UnitPrice = item.PhoneModel.Price,
+                    };
+
+                    invoiceDetails.Add(newInvoiceDetail);
+                    _context.InvoicesDetail.Add(newInvoiceDetail);
+                }
+                _context.Carts.RemoveRange(existingCart);
+                await _context.SaveChangesAsync();
+
+                return Ok(invoiceDetails);
+            }
+            return BadRequest("Cart not found");
         }
 
     }
