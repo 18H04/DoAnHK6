@@ -54,7 +54,7 @@ const ProductCard = ({ id, thumbnail, name, description, stock }) => {
         <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
             <div className="block2">
                 <div className="block2-pic hov-img0">
-                    <img className='imgPhones' src={image} alt={name} />
+                    <img className='imgPhones' src={thumbnail} alt={name} />
                     {/* 
                         <a href="#" className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                             Quick View
