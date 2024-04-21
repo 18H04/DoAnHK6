@@ -170,10 +170,6 @@ namespace Server.Controllers
             var username = User.Identity.Name;
             var user = await _userManager.FindByNameAsync(username);
 
-            if (user == null)
-            {
-                return NotFound();
-            }
 
             var existingCart = _context.Carts
     .Include(c => c.PhoneModel)
